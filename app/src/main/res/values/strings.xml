@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">g2calc</string>
+
+    <string name="textview1">Num1</string>
+    <string name="textview2">Num2</string>
+    <string name="textview3">Total</string>
+    <string name="input1">‎ </string>
+    <string name="input2">‎ </string>
+    <string name="Total">‎</string>
+    <string name="Add">Addition</string>
+    <string name="Sub">Subtraction</string>
+    <string name="Mul">Multiplication</string>
+    <string name="Div">Division</string>
+    <string name="des1">Welcome to the Group 2 Calculator</string>
+    <string name="des2">Group2 Members: Bayoran Nicko, Cahutay Ian Clint, Gimena Vhencint, Lachica Juan Miguel,
+        Traballo Jhon, and Rosellosa Jay"</string>
+</resources>
