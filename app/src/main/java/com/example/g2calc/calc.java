@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +41,11 @@ public class calc extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
 
+        EditText inp1 = findViewById(R.id.input1);
+        EditText inp2 = findViewById(R.id.input2);
+        EditText out = findViewById(R.id.output);
+
+
 //Animation Buttons Only
 
      ;   android_button = AnimationUtils.loadAnimation(this, R.anim.android_button);
@@ -49,6 +56,16 @@ public class calc extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     button.startAnimation(android_button);
+
+                    if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Double num1 = Double.parseDouble(inp1.getText().toString());
+                        Double num2 = Double.parseDouble(inp2.getText().toString());
+                        Double result = num1 + num2;
+                        out.setText(String.valueOf(result));
+                    }
+
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     button.startAnimation(android_button2);
                 }
@@ -61,6 +78,16 @@ public class calc extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     button2.startAnimation(android_button);
+
+                    if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Double num1 = Double.parseDouble(inp1.getText().toString());
+                        Double num2 = Double.parseDouble(inp2.getText().toString());
+                        Double result = num1 - num2;
+                        out.setText(String.valueOf(result));
+                    }
+
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     button2.startAnimation(android_button2);
                 }
@@ -73,6 +100,16 @@ public class calc extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     button3.startAnimation(android_button);
+
+                    if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Double num1 = Double.parseDouble(inp1.getText().toString());
+                        Double num2 = Double.parseDouble(inp2.getText().toString());
+                        Double result = num1 * num2;
+                        out.setText(String.valueOf(result));
+                    }
+
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     button3.startAnimation(android_button2);
                 }
@@ -85,6 +122,16 @@ public class calc extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     button4.startAnimation(android_button);
+
+                    if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Double num1 = Double.parseDouble(inp1.getText().toString());
+                        Double num2 = Double.parseDouble(inp2.getText().toString());
+                        Double result = num1 / num2;
+                        out.setText(String.valueOf(result));
+                    }
+
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     button4.startAnimation(android_button2);
                 }
