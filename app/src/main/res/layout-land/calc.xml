@@ -30,12 +30,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNumber4"
+            android:id="@+id/input1"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:ems="10"
             android:hint="@string/input1"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
@@ -59,13 +59,13 @@
             app:layout_constraintVertical_bias="0.261" />
 
         <EditText
-            android:id="@+id/editTextNumber5"
+            android:id="@+id/input2"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="164dp"
             android:ems="10"
             android:hint="@string/input2"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,12 +87,12 @@
             app:layout_constraintVertical_bias="0.463" />
 
         <EditText
-            android:id="@+id/editTextNumber6"
+            android:id="@+id/output"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:ems="10"
             android:hint="@string/Total"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
