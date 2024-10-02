@@ -307,8 +307,9 @@ public class simplecalc extends AppCompatActivity {
                 if (op.equals("/")){
                     double total = tnum1 / cnum1;
                     inputbox.setText(String.valueOf(total));
-                }
 
+                }
+                op ="";
 
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bequals.startAnimation(android_button2);
