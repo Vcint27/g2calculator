@@ -59,6 +59,7 @@ public class calc extends AppCompatActivity {
 
                     if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                        out.setText("");
                     }else{
                         Double num1 = Double.parseDouble(inp1.getText().toString());
                         Double num2 = Double.parseDouble(inp2.getText().toString());
@@ -81,6 +82,7 @@ public class calc extends AppCompatActivity {
 
                     if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                        out.setText("");
                     }else{
                         Double num1 = Double.parseDouble(inp1.getText().toString());
                         Double num2 = Double.parseDouble(inp2.getText().toString());
@@ -103,6 +105,8 @@ public class calc extends AppCompatActivity {
 
                     if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                        out.setText("");
+
                     }else{
                         Double num1 = Double.parseDouble(inp1.getText().toString());
                         Double num2 = Double.parseDouble(inp2.getText().toString());
@@ -125,6 +129,8 @@ public class calc extends AppCompatActivity {
 
                     if (inp1.getText().toString().isEmpty() || inp2.getText().toString().isEmpty()){
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
+                        out.setText("");
+
                     }else{
                         Double num1 = Double.parseDouble(inp1.getText().toString());
                         Double num2 = Double.parseDouble(inp2.getText().toString());
