@@ -61,10 +61,23 @@ public class calc extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
                         out.setText("");
                     }else{
-                        Double num1 = Double.parseDouble(inp1.getText().toString());
-                        Double num2 = Double.parseDouble(inp2.getText().toString());
-                        Double result = num1 + num2;
-                        out.setText(String.valueOf(result));
+
+                        String input1 = inp1.getText().toString();
+                        String input2 = inp2.getText().toString();
+
+                        if (input1.contains(".") || input2.contains(".")) {
+                            Double num1 = Double.parseDouble(inp1.getText().toString());
+                            Double num2 = Double.parseDouble(inp2.getText().toString());
+                            Double result = num1 + num2;
+                            out.setText(String.valueOf(result));
+
+                        }else{
+                            int num1 = Integer.parseInt(input1);
+                            int num2 = Integer.parseInt(input2);
+                            int result = num1 + num2;
+                            out.setText(String.valueOf(result));
+
+                        }
                     }
 
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
@@ -84,10 +97,23 @@ public class calc extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please Input Both Numbers", Toast.LENGTH_SHORT).show();
                         out.setText("");
                     }else{
-                        Double num1 = Double.parseDouble(inp1.getText().toString());
-                        Double num2 = Double.parseDouble(inp2.getText().toString());
-                        Double result = num1 - num2;
-                        out.setText(String.valueOf(result));
+
+                        String input1 = inp1.getText().toString();
+                        String input2 = inp2.getText().toString();
+
+                        if (input1.contains(".") || input2.contains(".")) {
+                            Double num1 = Double.parseDouble(inp1.getText().toString());
+                            Double num2 = Double.parseDouble(inp2.getText().toString());
+                            Double result = num1 - num2;
+                            out.setText(String.valueOf(result));
+
+                        }else{
+                            int num1 = Integer.parseInt(input1);
+                            int num2 = Integer.parseInt(input2);
+                            int result = num1 - num2;
+                            out.setText(String.valueOf(result));
+
+                        }
                     }
 
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
@@ -108,10 +134,22 @@ public class calc extends AppCompatActivity {
                         out.setText("");
 
                     }else{
-                        Double num1 = Double.parseDouble(inp1.getText().toString());
-                        Double num2 = Double.parseDouble(inp2.getText().toString());
-                        Double result = num1 * num2;
-                        out.setText(String.valueOf(result));
+                        String input1 = inp1.getText().toString();
+                        String input2 = inp2.getText().toString();
+
+                        if (input1.contains(".") || input2.contains(".")) {
+                            Double num1 = Double.parseDouble(inp1.getText().toString());
+                            Double num2 = Double.parseDouble(inp2.getText().toString());
+                            Double result = num1 * num2;
+                            out.setText(String.valueOf(result));
+
+                        }else{
+                            int num1 = Integer.parseInt(input1);
+                            int num2 = Integer.parseInt(input2);
+                            int result = num1 * num2;
+                            out.setText(String.valueOf(result));
+
+                        }
                     }
 
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
@@ -132,10 +170,22 @@ public class calc extends AppCompatActivity {
                         out.setText("");
 
                     }else{
-                        Double num1 = Double.parseDouble(inp1.getText().toString());
-                        Double num2 = Double.parseDouble(inp2.getText().toString());
-                        Double result = num1 / num2;
-                        out.setText(String.valueOf(result));
+                        String input1 = inp1.getText().toString();
+                        String input2 = inp2.getText().toString();
+
+                        if (input1.contains(".") || input2.contains(".")) {
+                            Double num1 = Double.parseDouble(inp1.getText().toString());
+                            Double num2 = Double.parseDouble(inp2.getText().toString());
+                            Double result = num1 / num2;
+                            out.setText(String.valueOf(result));
+
+                        }else{
+                            int num1 = Integer.parseInt(input1);
+                            int num2 = Integer.parseInt(input2);
+                            int result = num1 / num2;
+                            out.setText(String.valueOf(result));
+
+                        }
                     }
 
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
