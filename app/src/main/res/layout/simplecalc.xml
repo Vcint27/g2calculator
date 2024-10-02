@@ -239,7 +239,7 @@
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855">
+        app:layout_constraintVertical_bias="0.936">
 
         <Button
             android:id="@+id/button17"
@@ -249,8 +249,8 @@
             android:backgroundTint="@color/transparent"
             android:text="@string/dot"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="62dp"
             tools:layout_editor_absoluteY="691dp" />
 
@@ -276,8 +276,8 @@
             android:layout_row="0"
             android:layout_column="2"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/lorange"
             android:alpha="0.8"
+            android:backgroundTint="@color/lorange"
             android:text="@string/equal"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -299,7 +299,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.166" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

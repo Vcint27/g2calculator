@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.g2calc.R;
+
 public class intro extends AppCompatActivity {
 
     public static int SPLASH_TIMER = 1700;
