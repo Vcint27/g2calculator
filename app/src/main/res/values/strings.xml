@@ -22,6 +22,7 @@
     <string name="nine">9</string>
     <string name="c">c</string>
     <string name="percent">%</string>
-    <string name="less">≤</string>
+    <string name="less">&lt;</string>
+
 
 </resources>
