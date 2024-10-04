@@ -13,13 +13,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class simplecalc extends AppCompatActivity {
 
     //for da numbers and dot
-    Button b1, b2, b3, b4, b5, b6, b7, b8,b9,b0, bdot, bclear,bplus,bequals,bminus,bmultiply,bdivide,bpercent,bbackspace;
+    Button b1, b2, b3, b4, b5, b6, b7, b8,b9,b0, bdot, bclear,bplus,bequals,bminus,bmultiply,bdivide,bpercent;
 
     Animation android_button, android_button2;
     double tnum1;
@@ -55,16 +54,13 @@ public class simplecalc extends AppCompatActivity {
         bminus = findViewById(R.id.bminus);
         bmultiply = findViewById(R.id.bmultiply);
         bpercent = findViewById(R.id.bpercent);
-        bbackspace = findViewById(R.id.bSdelete);
         android_button = AnimationUtils.loadAnimation(this, R.anim.android_button);
         android_button2 = AnimationUtils.loadAnimation(this, R.anim.android_button2);
-
-        EditText inputbox = findViewById(R.id.inputBox);
-
         b1.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b1.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "1";
                 inputbox.setText(num1);
@@ -78,6 +74,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b2.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "2";
                 inputbox.setText(num1);
@@ -91,6 +88,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b3.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "3";
                 inputbox.setText(num1);
@@ -104,6 +102,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b4.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "4";
                 inputbox.setText(num1);
@@ -117,6 +116,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b5.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "5";
                 inputbox.setText(num1);
@@ -130,6 +130,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b6.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "6";
                 inputbox.setText(num1);
@@ -143,6 +144,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b7.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "7";
                 inputbox.setText(num1);
@@ -156,6 +158,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b8.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "8";
                 inputbox.setText(num1);
@@ -169,6 +172,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b9.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "9";
                 inputbox.setText(num1);
@@ -181,6 +185,7 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 b0.startAnimation(android_button);
 
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 num1 += "0";
                 inputbox.setText(num1);
@@ -193,33 +198,14 @@ public class simplecalc extends AppCompatActivity {
         bdot.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bdot.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.isEmpty())
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }else {
-                    String num1 = inputbox.getText().toString();
-                    num1 += ".";
-                    inputbox.setText(num1);
-                }
+
+                EditText inputbox = findViewById(R.id.inputBox);
+                String num1 = inputbox.getText().toString();
+                num1 += ".";
+                inputbox.setText(num1);
 
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bdot.startAnimation(android_button2);
-            }
-            return true;
-        });
-        bbackspace.setOnTouchListener((v, motionEvent) -> {
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                bbackspace.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.isEmpty())
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }else {
-                    inputbox.setText("");
-                }
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                bbackspace.startAnimation(android_button2);
             }
             return true;
         });
@@ -227,19 +213,13 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bclear.startAnimation(android_button);
 
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.isEmpty())
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }else {
-                    String num1 = inputbox.getText().toString();
-                    if (!num1.isEmpty()) {
-                        num1 = num1.substring(0, num1.length() - 1);
+                EditText inputbox = findViewById(R.id.inputBox);
+                String num1 = inputbox.getText().toString();
+                if (!num1.isEmpty()) {
+                    num1 = num1.substring(0, num1.length() - 1);
 
-                    }
-
-                    inputbox.setText(num1);
                 }
+                inputbox.setText(num1);
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bclear.startAnimation(android_button2);
             }
@@ -248,17 +228,10 @@ public class simplecalc extends AppCompatActivity {
         bplus.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bplus.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.isEmpty())
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tnum1 = Double.parseDouble(inputbox.getText().toString());
-                    op = "+";
-                    inputbox.setText("");
-                }
-
+                EditText inputbox = findViewById(R.id.inputBox);
+                tnum1 = Double.parseDouble(inputbox.getText().toString());
+                op = "+";
+                inputbox.setText("");
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bplus.startAnimation(android_button2);
             }
@@ -268,17 +241,10 @@ public class simplecalc extends AppCompatActivity {
         bminus.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bminus.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-
-                if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tnum1 = Double.parseDouble(inputbox.getText().toString());
-                    op = "-";
-                    inputbox.setText(String.valueOf(""));
-                }
+                EditText inputbox = findViewById(R.id.inputBox);
+                tnum1 = Double.parseDouble(inputbox.getText().toString());
+                op = "-";
+                inputbox.setText("");
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bminus.startAnimation(android_button2);
             }
@@ -287,16 +253,10 @@ public class simplecalc extends AppCompatActivity {
         bmultiply.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bmultiply.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tnum1 = Double.parseDouble(inputbox.getText().toString());
-                    op = "*";
-                    inputbox.setText(String.valueOf(""));
-                }
+                EditText inputbox = findViewById(R.id.inputBox);
+                tnum1 = Double.parseDouble(inputbox.getText().toString());
+                op = "*";
+                inputbox.setText("");
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bmultiply.startAnimation(android_button2);
             }
@@ -305,17 +265,10 @@ public class simplecalc extends AppCompatActivity {
         bdivide.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bdivide.startAnimation(android_button);
-                String inpbox = inputbox.getText().toString();
-
-                if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tnum1 = Double.parseDouble(inputbox.getText().toString());
-                    op = "/";
-                    inputbox.setText(String.valueOf(""));
-                }
+                EditText inputbox = findViewById(R.id.inputBox);
+                tnum1 = Double.parseDouble(inputbox.getText().toString());
+                op = "/";
+                inputbox.setText("");
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bdivide.startAnimation(android_button2);
             }
@@ -324,17 +277,10 @@ public class simplecalc extends AppCompatActivity {
         bpercent.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bpercent.startAnimation(android_button);
-
-                String inpbox = inputbox.getText().toString();
-                if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else{
-                    tnum1 = Double.parseDouble(inputbox.getText().toString());
-                    double total = tnum1 / 100;
-                    inputbox.setText(String.valueOf(total));
-                }
+                EditText inputbox = findViewById(R.id.inputBox);
+                tnum1 = Double.parseDouble(inputbox.getText().toString());
+                double total = tnum1 / 100;
+                inputbox.setText(String.valueOf(total));
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bpercent.startAnimation(android_button2);
             }
@@ -344,50 +290,25 @@ public class simplecalc extends AppCompatActivity {
         bequals.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bequals.startAnimation(android_button);
-
-                String inpbox = inputbox.getText().toString();
+                EditText inputbox = findViewById(R.id.inputBox);
                 double cnum1 =  Double.parseDouble(inputbox.getText().toString());
-
-                if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-                else if (op.equals("+")){
+                if (op.equals("+")){
                     double total = tnum1 + cnum1;
                     inputbox.setText(String.valueOf(total));
                 }
-                else if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
-                }
-
                 if (op.equals("-")){
                     double total = tnum1 - cnum1;
                     inputbox.setText(String.valueOf(total));
-
-                }else if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
                 }
-
                 if (op.equals("*")){
                     double total = tnum1 * cnum1;
                     inputbox.setText(String.valueOf(total));
-
-                }else if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
                 }
-
                 if (op.equals("/")){
                     double total = tnum1 / cnum1;
                     inputbox.setText(String.valueOf(total));
-
-                }else if(inpbox.equals(""))
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(),"Input Number First", Toast.LENGTH_SHORT);
                 }
-                op ="";
+
 
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bequals.startAnimation(android_button2);
