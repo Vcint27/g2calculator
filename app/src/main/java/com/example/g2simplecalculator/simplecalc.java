@@ -455,7 +455,7 @@ public class simplecalc extends AppCompatActivity {
                 tempString = inputbox.getText().toString();
                 if (tempString.isEmpty()) {
                     Toast.makeText(this, "Please Input a number!", Toast.LENGTH_SHORT).show();
-                    return true;  // Exit early to avoid further processing
+                    return true;
                 }
                 else if (tempString.equals(".")) {
                     Toast.makeText(this, "Please Input a valid number!", Toast.LENGTH_SHORT).show();
