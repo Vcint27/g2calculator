@@ -9,11 +9,11 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.view.LayoutInflater;
+/*import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.TextView;*/
 import android.widget.Toast;
 import android.view.MotionEvent;
 import android.view.animation.Animation;
@@ -22,7 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-/** @noinspection deprecation*/
+/** @noinspection */
 public class simplecalc extends AppCompatActivity {
 
     //for da numbers and dot
