@@ -8,6 +8,13 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.view.LayoutInflater;
+import android.view.View;
+
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.view.MotionEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,14 +22,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+/** @noinspection deprecation*/
 public class simplecalc extends AppCompatActivity {
 
     //for da numbers and dot
-    Button b1, b2, b3, b4, b5, b6, b7, b8,b9,b0, bdot, bclear,bplus,bequals,bminus,bmultiply,bdivide,bpercent;
+    Button b1, b2, b3, b4, b5, b6, b7, b8,b9,b0, bdot, bclear,bplus,bequals,bminus,bmultiply,bdivide,bpercent,bdelete;
 
     Animation android_button, android_button2;
-    double tnum1;
+    double tnum1,pnum,cnum1;
     String op;
+    String tempString;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -35,6 +44,17 @@ public class simplecalc extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(1000);
         animationDrawable.setExitFadeDuration(2500);
         animationDrawable.start();
+
+        //custom toast inflater :(
+
+        /*ayoutInflater inflater = getLayoutInflater();
+        View toastInvalidNumInf = inflater.inflate(R.layout.calctoasts,(ViewGroup) findViewById(R.id.toastInvalidNum));
+        TextView toasttxtInvalidNum = toastInvalidNumInf.findViewById(R.id.toast_text_1);
+        Toast toastInvalidNum = new Toast(getApplicationContext());
+        toastInvalidNum.setDuration(Toast.LENGTH_SHORT);
+        toastInvalidNum.setView(toastInvalidNumInf);
+*/
+
 
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
@@ -54,6 +74,7 @@ public class simplecalc extends AppCompatActivity {
         bminus = findViewById(R.id.bminus);
         bmultiply = findViewById(R.id.bmultiply);
         bpercent = findViewById(R.id.bpercent);
+        bdelete = findViewById(R.id.bSdelete);
         android_button = AnimationUtils.loadAnimation(this, R.anim.android_button);
         android_button2 = AnimationUtils.loadAnimation(this, R.anim.android_button2);
         b1.setOnTouchListener((v, motionEvent) -> {
@@ -214,6 +235,19 @@ public class simplecalc extends AppCompatActivity {
                 bclear.startAnimation(android_button);
 
                 EditText inputbox = findViewById(R.id.inputBox);
+
+
+                inputbox.setText("");
+            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                bclear.startAnimation(android_button2);
+            }
+            return true;
+        });
+        bdelete.setOnTouchListener((v, motionEvent) -> {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                bdelete.startAnimation(android_button);
+
+                EditText inputbox = findViewById(R.id.inputBox);
                 String num1 = inputbox.getText().toString();
                 if (!num1.isEmpty()) {
                     num1 = num1.substring(0, num1.length() - 1);
@@ -221,7 +255,7 @@ public class simplecalc extends AppCompatActivity {
                 }
                 inputbox.setText(num1);
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                bclear.startAnimation(android_button2);
+                bdelete.startAnimation(android_button2);
             }
             return true;
         });
@@ -229,9 +263,27 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bplus.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
-                tnum1 = Double.parseDouble(inputbox.getText().toString());
-                op = "+";
-                inputbox.setText("");
+                tempString = String.valueOf(inputbox.getText());
+                if(tempString.isEmpty()){
+                /*toastInvalidNum.show();*/
+                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+                }
+                else if (tempString.equals(".")) {
+                    Toast.makeText(this, "Please enter a valid input!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if(op.equals("+")){
+                        cnum1 = Double.parseDouble(inputbox.getText().toString());
+                        pnum = tnum1 + cnum1;
+                        inputbox.setText(String.valueOf(pnum));
+                        tnum1 = 0;
+                    }else{
+                        tnum1 = Double.parseDouble(inputbox.getText().toString());
+                        op = "+";
+                        inputbox.setText("");
+                    }
+                }
+
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bplus.startAnimation(android_button2);
             }
@@ -242,9 +294,18 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bminus.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
-                tnum1 = Double.parseDouble(inputbox.getText().toString());
-                op = "-";
-                inputbox.setText("");
+                tempString = String.valueOf(inputbox.getText());
+                if(tempString.isEmpty()){
+                    /*toastInvalidNum.show();*/
+                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+
+                } else if (tempString.equals(".")) {
+                    Toast.makeText(this, "Please enter a valid input!", Toast.LENGTH_SHORT).show();
+                } else {
+                    tnum1 = Double.parseDouble(inputbox.getText().toString());
+                    op = "-";
+                    inputbox.setText("");
+                }
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bminus.startAnimation(android_button2);
             }
@@ -254,9 +315,18 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bmultiply.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
+                tempString = String.valueOf(inputbox.getText());
+                if(tempString.isEmpty()){
+                    /*toastInvalidNum.show();*/
+                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+
+                } else if (tempString.equals(".")) {
+                    Toast.makeText(this, "Please enter a valid input!", Toast.LENGTH_SHORT).show();
+                } else {
                 tnum1 = Double.parseDouble(inputbox.getText().toString());
                 op = "*";
                 inputbox.setText("");
+                }
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bmultiply.startAnimation(android_button2);
             }
@@ -266,9 +336,18 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bdivide.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
-                tnum1 = Double.parseDouble(inputbox.getText().toString());
-                op = "/";
-                inputbox.setText("");
+                tempString = String.valueOf(inputbox.getText());
+                if(tempString.isEmpty()){
+                    /*toastInvalidNum.show();*/
+                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+
+                } else if (tempString.equals(".")) {
+                    Toast.makeText(this, "Please enter a valid input!", Toast.LENGTH_SHORT).show();
+                } else {
+                    tnum1 = Double.parseDouble(inputbox.getText().toString());
+                    op = "/";
+                    inputbox.setText("");
+                }
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bdivide.startAnimation(android_button2);
             }
@@ -291,22 +370,22 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bequals.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
-                double cnum1 =  Double.parseDouble(inputbox.getText().toString());
+                cnum1 =  Double.parseDouble(inputbox.getText().toString());
                 if (op.equals("+")){
-                    double total = tnum1 + cnum1;
-                    inputbox.setText(String.valueOf(total));
+                     pnum = tnum1 + cnum1;
+                    inputbox.setText(String.valueOf(pnum));
                 }
                 if (op.equals("-")){
-                    double total = tnum1 - cnum1;
-                    inputbox.setText(String.valueOf(total));
+                    pnum = tnum1 - cnum1;
+                    inputbox.setText(String.valueOf(pnum));
                 }
                 if (op.equals("*")){
-                    double total = tnum1 * cnum1;
-                    inputbox.setText(String.valueOf(total));
+                    pnum = tnum1 * cnum1;
+                    inputbox.setText(String.valueOf(pnum));
                 }
                 if (op.equals("/")){
-                    double total = tnum1 / cnum1;
-                    inputbox.setText(String.valueOf(total));
+                    pnum = tnum1 / cnum1;
+                    inputbox.setText(String.valueOf(pnum));
                 }
 
 
