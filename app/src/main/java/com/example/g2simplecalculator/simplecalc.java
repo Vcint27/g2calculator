@@ -233,10 +233,8 @@ public class simplecalc extends AppCompatActivity {
         bclear.setOnTouchListener((v, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bclear.startAnimation(android_button);
-
                 EditText inputbox = findViewById(R.id.inputBox);
-
-
+                op = "";
                 inputbox.setText("");
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bclear.startAnimation(android_button2);
@@ -419,6 +417,10 @@ public class simplecalc extends AppCompatActivity {
                 tempString = String.valueOf(inputbox.getText());
                 if(tempString.isEmpty()) {
                     Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                else if(!op.isEmpty()){
+                    Toast.makeText(this, "Complete the operation first!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     tnum1 = Double.parseDouble(inputbox.getText().toString());
