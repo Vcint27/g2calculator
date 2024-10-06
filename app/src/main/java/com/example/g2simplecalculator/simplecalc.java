@@ -357,6 +357,10 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bpercent.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
+                tempString = String.valueOf(inputbox.getText());
+                if(tempString.isEmpty()) {
+                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+                }
                 tnum1 = Double.parseDouble(inputbox.getText().toString());
                 double total = tnum1 / 100;
                 inputbox.setText(String.valueOf(total));
