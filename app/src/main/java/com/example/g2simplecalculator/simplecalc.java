@@ -279,7 +279,15 @@ public class simplecalc extends AppCompatActivity {
                             inputbox.setText(String.valueOf(pnum));
                             tnum1 = 0;
                             op = "";
-                        } else {
+                        }
+                        /*else if(op.equals("-")){
+                            cnum1 = Double.parseDouble(inputbox.getText().toString());
+                            pnum = tnum1 - cnum1;
+                            inputbox.setText(String.valueOf(pnum));
+                            tnum1 = 0;
+                            op = "";
+                        } */
+                        else {
 
                             tnum1 = Double.parseDouble(inputbox.getText().toString());
                             op = "+";
@@ -388,11 +396,16 @@ public class simplecalc extends AppCompatActivity {
                 } else {
                     try {
                         if (op.equals("/")) {
-                            cnum1 = Double.parseDouble(inputbox.getText().toString());
-                            pnum = tnum1 / cnum1;
-                            inputbox.setText(String.valueOf(pnum));
-                            tnum1 = 0;
-                            op = "";
+                            if (cnum1 == 0) {
+                                Toast.makeText(this, "Cannot divide by zero!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                cnum1 = Double.parseDouble(inputbox.getText().toString());
+                                pnum = tnum1 / cnum1;
+                                inputbox.setText(String.valueOf(pnum));
+                                tnum1 = 0;
+                                op = "";
+                            }
                         } else {
 
                             tnum1 = Double.parseDouble(inputbox.getText().toString());
@@ -400,7 +413,6 @@ public class simplecalc extends AppCompatActivity {
                             inputbox.setText("");
                         }
                     } catch (NumberFormatException e) {
-
                         Toast.makeText(this, "Invalid number format!", Toast.LENGTH_SHORT).show();
                         return true;
                     }
@@ -422,6 +434,9 @@ public class simplecalc extends AppCompatActivity {
                 else if(!op.isEmpty()){
                     Toast.makeText(this, "Complete the operation first!", Toast.LENGTH_SHORT).show();
                 }
+                else if (tempString.equals("0")) {
+                    Toast.makeText(this, "Cannot do the operation by zero!", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     tnum1 = Double.parseDouble(inputbox.getText().toString());
                     double total = tnum1 / 100;
@@ -437,33 +452,49 @@ public class simplecalc extends AppCompatActivity {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 bequals.startAnimation(android_button);
                 EditText inputbox = findViewById(R.id.inputBox);
-                cnum1 =  Double.parseDouble(inputbox.getText().toString());
-                tempString = String.valueOf(inputbox.getText());
-                if(!tempString.isEmpty()){
-                    if (op.equals("+")) {
-                        pnum = tnum1 + cnum1;
-                        inputbox.setText(String.valueOf(pnum));
-                    }
-                    if (op.equals("-")) {
-                        pnum = tnum1 - cnum1;
-                        inputbox.setText(String.valueOf(pnum));
-                    }
-                    if (op.equals("*")) {
-                        pnum = tnum1 * cnum1;
-                        inputbox.setText(String.valueOf(pnum));
-                    }
-                    if (op.equals("/")) {
-                        pnum = tnum1 / cnum1;
-                        inputbox.setText(String.valueOf(pnum));
-                    }
+                tempString = inputbox.getText().toString();
+                if (tempString.isEmpty()) {
+                    Toast.makeText(this, "Please Input a number!", Toast.LENGTH_SHORT).show();
+                    return true;  // Exit early to avoid further processing
                 }
-                else{
-                    Toast.makeText(this, "Please Input A number!", Toast.LENGTH_SHORT).show();
+                else if (tempString.equals(".")) {
+                    Toast.makeText(this, "Please Input a valid number!", Toast.LENGTH_SHORT).show();
+                    return true;
                 }
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                try {
+                    cnum1 = Double.parseDouble(tempString);
+                    switch (op) {
+                        case "+":
+                            pnum = tnum1 + cnum1;
+                            inputbox.setText(String.valueOf(pnum));
+                            return true;
+                        case "-":
+                            pnum = tnum1 - cnum1;
+                            inputbox.setText(String.valueOf(pnum));
+                            return true;
+                        case "*":
+                            pnum = tnum1 * cnum1;
+                            inputbox.setText(String.valueOf(pnum));
+                            return true;
+                        case "/":
+                            if (cnum1 == 0) {
+                                Toast.makeText(this, "Cannot divide by zero!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                pnum = tnum1 / cnum1;
+                                inputbox.setText(String.valueOf(pnum));
+                            }
+                            return true;
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Invalid number format!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            }
+            else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 bequals.startAnimation(android_button2);
             }
             return true;
         });
+
     }
 }
